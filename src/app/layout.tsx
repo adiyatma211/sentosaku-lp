@@ -16,9 +16,27 @@ export const metadata: Metadata = {
   title: "Sentosakutech",
   description: "Sentosakutech - Studio Web & Mobile Full-stack",
   icons: {
-    icon: '/favicon.png',
+    icon: [
+      {
+        url: '/favicon.png',
+        sizes: '32x32',
+      },
+      {
+        url: '/favicon.png',
+        sizes: '192x192',
+      },
+      {
+        url: '/favicon.png',
+        sizes: '512x512',
+      },
+    ],
+    apple: [
+      {
+        url: '/favicon.png',
+        sizes: '192x192',
+      },
+    ],
     shortcut: '/favicon.png',
-    apple: '/favicon.png',
   },
   manifest: '/manifest.webmanifest',
   appleWebApp: {
