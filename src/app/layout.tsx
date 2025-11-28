@@ -15,6 +15,18 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Sentosakutech",
   description: "Sentosakutech - Studio Web & Mobile Full-stack",
+  icons: {
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
+  },
+  manifest: '/manifest.webmanifest',
+  themeColor: '#5e8c52',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'Sentosaku Tech',
+  },
 };
 
 export default function RootLayout({
