@@ -24,9 +24,9 @@ const WhatsappIcon = () => (
 );
 
 const processInfo = [
-  { label: "Proyek Selesai", value: 32, unit: "produk" },
+  { label: "Proyek Selesai", value: 150, unit: "produk" },
   { label: "Kepuasan Klien", value: 98, unit: "%" },
-  { label: "Waktu Pengiriman", value: 2.5, unit: "minggu" },
+  { label: "Waktu Rilis", value: 7, unit: "hari" },
 ];
 
 const stats = [
@@ -174,8 +174,8 @@ export default function Home() {
             <div className={styles.layeredCard}>
               <div className={`${styles.layeredInner} ${styles.heroPanel}`}>
                 <div className={styles.panelHeader}>
-                  <span>Panel Rilis</span>
-                  <span className={styles.panelBadge}>Alpha / 09</span>
+                  <span>Dashboard Sentosaku</span>
+                  <span className={styles.panelBadge}>Ready Launch</span>
                 </div>
                 <div className={styles.processList}>
                   {processInfo.map((process) => (
@@ -192,15 +192,32 @@ export default function Home() {
                 </div>
                 <div className={styles.heroBadge}>
                   <div>
-                    <p>Jeda latensi</p>
-                    <strong>3.2ms</strong>
+                    <p>Project Success Rate</p>
+                    <strong>98%</strong>
                   </div>
-                  <p className={styles.badgeDetail}>QA otomatis aktif</p>
+                  <p className={styles.badgeDetail}>Client satisfaction guaranteed</p>
                 </div>
                 <div className={styles.pillars}>
-                  <span>Platform web</span>
-                  <span>Aplikasi mobile</span>
-                  <span>DevOps & cloud</span>
+                  <span>Web Development</span>
+                  <span>Mobile Apps</span>
+                  <span>Cloud Solutions</span>
+                </div>
+                <div className={styles.heroPanelActions}>
+                  <a
+                    className={`${styles.primaryAction} ${styles.panelCta}`}
+                    href={WHATSAPP_URL}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    <WhatsappIcon />
+                    Mulai Proyek Sekarang
+                  </a>
+                  <a
+                    className={styles.secondaryAction}
+                    href="#projects"
+                  >
+                    Lihat Portfolio
+                  </a>
                 </div>
               </div>
             </div>
@@ -255,6 +272,136 @@ export default function Home() {
                 </article>
               </button>
             ))}
+          </div>
+        </section>
+
+        <section className={styles.clientsSection}>
+          <div className={styles.sectionHeader}>
+            <p className={styles.tagline}>Klien Percaya</p>
+            <h2>Mereka yang telah mempercayai kami</h2>
+            <p>
+              Kami bangun kolaborasi jangka panjang dengan startup dan enterprise
+              untuk menghadirkan solusi digital yang berdampak.
+            </p>
+          </div>
+          <div className={styles.clientsCarouselWrapper}>
+            <div className={styles.clientsCarousel}>
+              <div className={styles.clientsTrack}>
+                {[
+                  { name: "TechCorp", initial: "TC" },
+                  { name: "FinanceHub", initial: "FH" },
+                  { name: "HealthPlus", initial: "HP" },
+                  { name: "EduSmart", initial: "ES" },
+                  { name: "LogisticsPro", initial: "LP" },
+                  { name: "RetailMax", initial: "RM" },
+                  { name: "DataFlow", initial: "DF" },
+                  { name: "CloudBase", initial: "CB" },
+                ].map((client, index) => (
+                  <div key={index} className={styles.clientLogo}>
+                    <div className={styles.logoPlaceholder}>
+                      <span className={styles.logoInitial}>{client.initial}</span>
+                      <span className={styles.logoName}>{client.name}</span>
+                    </div>
+                  </div>
+                ))}
+                {/* Duplicate items for seamless scrolling */}
+                {[
+                  { name: "TechCorp", initial: "TC" },
+                  { name: "FinanceHub", initial: "FH" },
+                  { name: "HealthPlus", initial: "HP" },
+                  { name: "EduSmart", initial: "ES" },
+                  { name: "LogisticsPro", initial: "LP" },
+                  { name: "RetailMax", initial: "RM" },
+                  { name: "DataFlow", initial: "DF" },
+                  { name: "CloudBase", initial: "CB" },
+                ].map((client, index) => (
+                  <div key={`duplicate-${index}`} className={styles.clientLogo}>
+                    <div className={styles.logoPlaceholder}>
+                      <span className={styles.logoInitial}>{client.initial}</span>
+                      <span className={styles.logoName}>{client.name}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.testimonialsSection}>
+          <div className={styles.sectionHeader}>
+            <p className={styles.tagline}>Testimoni</p>
+            <h2>Apa kata klien kami</h2>
+            <p>
+              Kepuasan klien adalah prioritas utama kami. Dengarkan pengalaman
+              mereka yang telah bekerjasama dengan tim Sentosaku.
+            </p>
+          </div>
+          <div className={styles.testimonialsGrid}>
+            <article className={`${styles.layeredCard} ${styles.testimonialCard}`}>
+              <div className={`${styles.layeredInner} ${styles.testimonialContent}`}>
+                <div className={styles.testimonialRating}>
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <span key={star} className={styles.star}>★</span>
+                  ))}
+                </div>
+                <blockquote className={styles.testimonialText}>
+                  "Tim Sentosaku sangat profesional dalam mengembangkan aplikasi mobile kami. Proses yang transparan dan hasil yang melebihi ekspektasi."
+                </blockquote>
+                <div className={styles.testimonialAuthor}>
+                  <div className={styles.authorAvatar}>
+                    <div className={styles.avatarPlaceholder}>JD</div>
+                  </div>
+                  <div className={styles.authorInfo}>
+                    <h4>John Doe</h4>
+                    <p>CEO, TechCorp Indonesia</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article className={`${styles.layeredCard} ${styles.testimonialCard}`}>
+              <div className={`${styles.layeredInner} ${styles.testimonialContent}`}>
+                <div className={styles.testimonialRating}>
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <span key={star} className={styles.star}>★</span>
+                  ))}
+                </div>
+                <blockquote className={styles.testimonialText}>
+                  "Platform web yang dikembangkan Sentosaku meningkatkan efisiensi operasional kami hingga 40%. Highly recommended!"
+                </blockquote>
+                <div className={styles.testimonialAuthor}>
+                  <div className={styles.authorAvatar}>
+                    <div className={styles.avatarPlaceholder}>SR</div>
+                  </div>
+                  <div className={styles.authorInfo}>
+                    <h4>Sarah Rahman</h4>
+                    <p>CTO, FinanceHub Asia</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article className={`${styles.layeredCard} ${styles.testimonialCard}`}>
+              <div className={`${styles.layeredInner} ${styles.testimonialContent}`}>
+                <div className={styles.testimonialRating}>
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <span key={star} className={styles.star}>★</span>
+                  ))}
+                </div>
+                <blockquote className={styles.testimonialText}>
+                  "Kolaborasi yang sangat menyenangkan. Tim yang responsif dan solutif, selalu siap membantu kami mencapai target digital."
+                </blockquote>
+                <div className={styles.testimonialAuthor}>
+                  <div className={styles.authorAvatar}>
+                    <div className={styles.avatarPlaceholder}>MP</div>
+                  </div>
+                  <div className={styles.authorInfo}>
+                    <h4>Michael Pratama</h4>
+                    <p>Founder, HealthPlus</p>
+                  </div>
+                </div>
+              </div>
+            </article>
           </div>
         </section>
 

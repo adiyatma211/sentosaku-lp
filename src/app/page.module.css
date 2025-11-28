@@ -340,7 +340,7 @@
 .heroPanel {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 24px;
   animation: fadeScale 1s ease-out 0.15s both;
 }
 
@@ -358,9 +358,12 @@
 .panelBadge {
   padding: 8px 16px;
   border-radius: 20px;
-  background: var(--primary);
+  background: linear-gradient(135deg, #10b981, #059669);
   color: white;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.8rem;
 }
 
 .featureList {
@@ -495,12 +498,220 @@
   font-size: 0.85rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  background: rgba(94, 140, 82, 0.05);
+  transition: all 0.3s ease;
+}
+
+.pillars span:hover {
+  background: rgba(94, 140, 82, 0.15);
+  border-color: var(--secondary);
+  transform: translateY(-2px);
 }
 
 .projectsSection {
   display: flex;
   flex-direction: column;
   gap: 40px;
+}
+
+.clientsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  animation: fadeUp 0.8s ease-out both;
+}
+
+.clientsCarouselWrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 60px 0;
+}
+
+.clientsCarousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.clientsTrack {
+  display: flex;
+  gap: 40px;
+  animation: scrollLogos 30s linear infinite;
+  width: fit-content;
+}
+
+@keyframes scrollLogos {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.clientsCarouselWrapper:hover .clientsTrack {
+  animation-play-state: paused;
+}
+
+.clientLogo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 160px;
+  height: 80px;
+  padding: 16px;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  cursor: default;
+  flex-shrink: 0;
+}
+
+.clientLogo:hover {
+  transform: translateY(-4px) scale(1.05);
+}
+
+.logoPlaceholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.logoInitial {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.logoName {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+.testimonialsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  animation: fadeUp 0.9s ease-out both;
+}
+
+.testimonialsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+  align-items: start;
+}
+
+.testimonialCard {
+  height: 100%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.testimonialCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 60px rgba(19, 32, 21, 0.15);
+}
+
+.testimonialContent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 32px;
+  height: 100%;
+}
+
+.testimonialRating {
+  display: flex;
+  gap: 4px;
+}
+
+.star {
+  font-size: 1.2rem;
+  color: #fbbf24;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.testimonialText {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--text-strong);
+  margin: 0;
+  font-weight: 500;
+  font-style: italic;
+  flex: 1;
+}
+
+.testimonialAuthor {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-faint);
+}
+
+.authorAvatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.authorInfo h4 {
+  margin: 0 0 4px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-strong);
+}
+
+.authorInfo p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Hero Panel Actions */
+.heroPanelActions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.panelCta {
+  width: 100%;
+  justify-content: center;
+  padding: 16px 24px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: linear-gradient(135deg, #10b981, #059669);
+  box-shadow: 0 15px 35px rgba(16, 185, 129, 0.35);
+}
+
+.panelCta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px rgba(16, 185, 129, 0.45);
 }
 
 .sectionHeader {
@@ -975,6 +1186,49 @@
 
   .projectsSection {
     gap: 32px;
+  }
+
+  .clientsCarouselWrapper {
+    padding: 50px 0;
+  }
+
+  .clientsTrack {
+    gap: 24px;
+    animation-duration: 25s;
+  }
+
+  .clientLogo {
+    min-width: 120px;
+    height: 60px;
+    padding: 12px;
+  }
+
+  .logoInitial {
+    width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+  }
+
+  .logoName {
+    font-size: 0.75rem;
+  }
+
+  .testimonialsGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .testimonialContent {
+    padding: 24px;
+  }
+
+  .heroPanelActions {
+    gap: 10px;
+  }
+
+  .panelCta {
+    padding: 14px 20px;
+    font-size: 0.9rem;
   }
 }
 
