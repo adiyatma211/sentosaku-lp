@@ -21,12 +21,15 @@ export const metadata: Metadata = {
     apple: '/favicon.png',
   },
   manifest: '/manifest.webmanifest',
-  themeColor: '#5e8c52',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
     title: 'Sentosaku Tech',
   },
+};
+
+export const viewport = {
+  themeColor: '#5e8c52',
 };
 
 export default function RootLayout({
