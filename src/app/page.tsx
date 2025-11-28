@@ -23,10 +23,10 @@ const WhatsappIcon = () => (
   </svg>
 );
 
-const signals = [
-  { label: "Pemantauan CI/CD real-time", value: 96 },
-  { label: "Cakupan rilis mobile", value: 82 },
-  { label: "Stabilitas cloud terukur", value: 99 },
+const processInfo = [
+  { label: "Proyek Selesai", value: 32, unit: "produk" },
+  { label: "Kepuasan Klien", value: 98, unit: "%" },
+  { label: "Waktu Pengiriman", value: 2.5, unit: "minggu" },
 ];
 
 const stats = [
