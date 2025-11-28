@@ -177,15 +177,15 @@ export default function Home() {
                   <span>Panel Rilis</span>
                   <span className={styles.panelBadge}>Alpha / 09</span>
                 </div>
-                <div className={styles.signalList}>
-                  {signals.map((signal) => (
-                    <div key={signal.label} className={styles.signal}>
-                      <div className={styles.signalMeta}>
-                        <p>{signal.label}</p>
-                        <span>{signal.value}%</span>
+                <div className={styles.processList}>
+                  {processInfo.map((process) => (
+                    <div key={process.label} className={styles.processItem}>
+                      <div className={styles.processIcon}>
+                        ✓
                       </div>
-                      <div className={styles.signalBar}>
-                        <span style={{ width: `${signal.value}%` }} />
+                      <div className={styles.processValue}>{process.value}{process.unit}</div>
+                      <div className={styles.processMeta}>
+                        <p>{process.label}</p>
                       </div>
                     </div>
                   ))}
