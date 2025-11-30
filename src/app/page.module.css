@@ -231,8 +231,8 @@
 }
 
 .whatsappIcon {
-  width: 20px;
-  height: 20px;
+  width: 28px;
+  height: 28px;
 }
 
 .secondaryAction {
@@ -856,17 +856,18 @@
   bottom: 32px;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   background: rgba(255, 255, 255, 0.95);
   color: var(--primary);
   border: 1px solid rgba(94, 140, 82, 0.3);
   border-radius: 999px;
-  padding: 14px 22px;
+  padding: 18px 26px;
   box-shadow: 0 25px 60px rgba(19, 32, 21, 0.18);
   backdrop-filter: blur(10px);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  font-size: 0.8rem;
+  font-size: 0.95rem;
+  font-weight: 600;
   z-index: 10;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   animation: floatPulse 4s ease-in-out infinite;
@@ -1249,7 +1250,7 @@
   .whatsappFloating {
     right: 16px;
     bottom: 16px;
-    padding: 12px 18px;
+    padding: 16px 22px;
   }
 
   /* Mobile Modal Styles */

@@ -5,6 +5,11 @@ import Link from "next/link";
 import { useState } from "react";
 import styles from "./page.module.css";
 import brandLogo from "./assets/logo_bg_color.png";
+import LPGading from "./assets/LPGading.png";
+import managemenSurat from "./assets/managemenSurat.png";
+import PaddleWeb from "./assets/PaddleWeb.png";
+import PosGading from "./assets/Pos Gading.png";
+import SentosaPos from "./assets/SentosaPos.png";
 
 const WHATSAPP_URL =
   "https://wa.me/6281234567890?text=Hello%20Sentosaku%20Team%2C%20let%27s%20discuss%20a%20project.";
@@ -37,77 +42,66 @@ const stats = [
 
 const projects = [
   {
-    slug: "pulse-market",
-    title: "Pulse Market",
-    category: "Platform Web Fintech",
+    slug: "lp-gading",
+    title: "LP Gading",
+    category: "Landing Page Digital Printing",
     description:
-      "Marketplace investasi responsif dengan pembayaran multi-dompet dan dasbor investor yang akurat.",
-    status: "Beta publik",
-    image: "/api/placeholder/400/250",
-    projectUrl: "https://pulse-market.example.com",
-    technologies: ["React", "Node.js", "MongoDB", "Stripe API"],
-    features: ["Multi-wallet payments", "Real-time analytics", "Investor dashboard"]
+      "Landing page profesional untuk layanan digital printing dengan portfolio galeri dan sistem quote online.",
+    status: "Produktif",
+    image: LPGading,
+    projectUrl: "https://lp-gading.example.com",
+    technologies: ["React", "Next.js", "Tailwind CSS", "Node.js"],
+    features: ["Online quote system", "Portfolio gallery", "Contact forms"]
   },
   {
-    slug: "nexa-courier",
-    title: "Nexa Courier",
-    category: "Suite Mobile Logistik",
+    slug: "managemen-surat",
+    title: "Manajemen Surat",
+    category: "Sistem Arsip Digital",
     description:
-      "Aplikasi kurir dan dispatcher dilengkapi pelacakan armada live serta intelijen rute otomatis.",
-    status: "Siap Play Store",
-    image: "/api/placeholder/400/250",
-    projectUrl: "https://nexa-courier.example.com",
-    technologies: ["React Native", "Firebase", "Google Maps API"],
-    features: ["Live fleet tracking", "Route optimization", "Real-time dispatch"]
+      "Sistem arsip surat masuk dan keluar dengan pencarian cepat, kategorisasi otomatis, dan approval workflow.",
+    status: "Produktif",
+    image: managemenSurat,
+    projectUrl: "https://managemen-surat.example.com",
+    technologies: ["Next.js", "PostgreSQL", "Document AI", "Prisma"],
+    features: ["Surat tracking", "Digital archive", "Approval workflow"]
   },
   {
-    slug: "lumacare",
-    title: "LumaCare",
-    category: "SaaS Kesehatan",
+    slug: "paddle-web",
+    title: "Paddle Web",
+    category: "Booking Lapangan Padel",
     description:
-      "Penjadwalan klinik, telekonsultasi, dan portal pasien sesuai standar keamanan kesehatan.",
-    status: "Rollout Series B",
-    image: "/api/placeholder/400/250",
-    projectUrl: "https://lumacare.example.com",
-    technologies: ["Vue.js", "Python Django", "PostgreSQL", "WebRTC"],
-    features: ["Appointment scheduling", "Teleconsultation", "Patient portal"]
+      "Landing page booking lapangan padel dengan jadwal real-time, pemilihan slot waktu, dan integrasi pembayaran.",
+    status: "Produktif",
+    image: PaddleWeb,
+    projectUrl: "https://paddle-web.example.com",
+    technologies: ["React", "Node.js", "Calendar API", "Stripe API"],
+    features: ["Real-time booking", "Schedule management", "Payment gateway"]
   },
   {
-    slug: "orbit-travel",
-    title: "Orbit Travel",
-    category: "Progressive Web App",
+    slug: "sentosa-pos",
+    title: "Sentosa POS",
+    category: "Sistem Kasir Retail",
     description:
-      "Pengalaman booking offline-first dengan modul loyalti untuk brand perjalanan modern.",
-    status: "v2 berjalan",
-    image: "/api/placeholder/400/250",
-    projectUrl: "https://orbit-travel.example.com",
-    technologies: ["PWA", "Service Workers", "IndexedDB"],
-    features: ["Offline booking", "Loyalty program", "Modern travel experience"]
+      "Aplikasi kasir untuk retail general dengan inventory management, laporan penjualan, dan member loyalty program.",
+    status: "Produktif",
+    image: SentosaPos,
+    projectUrl: "https://sentosa-pos.example.com",
+    technologies: ["React Native", "Firebase", "Cloud Functions", "Redux"],
+    features: ["Inventory tracking", "Sales analytics", "Loyalty program"]
   },
   {
-    slug: "studiolink",
-    title: "StudioLink",
-    category: "Alat Kreator",
+    slug: "pos-gading",
+    title: "POS Gading",
+    category: "Sistem Kasir Digital Printing",
     description:
-      "Workspace lintas perangkat agar kreator bisa briefing, review, dan rilis konten lebih cepat.",
-    status: "Review App Store",
-    image: "/api/placeholder/400/250",
-    projectUrl: "https://studiolink.example.com",
-    technologies: ["Next.js", "WebRTC", "Cloudinary", "Figma API"],
-    features: ["Cross-device workspace", "Content review", "Quick publishing"]
+      "Aplikasi kasir khusus untuk usaha printing dengan project tracking, pricing calculator, dan order history.",
+    status: "Produktif",
+    image: PosGading,
+    projectUrl: "https://pos-gading.example.com",
+    technologies: ["React Native", "Node.js", "PostgreSQL", "API"],
+    features: ["Printing calculator", "Order tracking", "Custom pricing"]
   },
-  {
-    slug: "flux-analytics",
-    title: "Flux Analytics",
-    category: "Dasbor Data",
-    description:
-      "BI tertanam bagi tim sales & operasional dengan kontrol akses granular dan notifikasi instan.",
-    status: "Pilot enterprise",
-    image: "/api/placeholder/400/250",
-    projectUrl: "https://flux-analytics.example.com",
-    technologies: ["React", "D3.js", "Python", "Apache Spark"],
-    features: ["Embedded BI", "Granular access control", "Instant notifications"]
-  },
+
 ];
 
 export default function Home() {
