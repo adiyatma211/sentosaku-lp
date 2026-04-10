@@ -1,11 +1,5 @@
 import type { ApiResponse, ApiError, Project, Testimonial, Stat, Client, ProcessInfo } from "./types";
 
-const API_CONFIG = {
-  baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL || "https://dashboard.sentosakutech.com/api/v1",
-  timeout: 10000,
-  cacheDuration: 3600,
-};
-
 interface FetchOptions extends RequestInit {
   timeout?: number;
   useCache?: boolean;
@@ -28,22 +22,18 @@ async function fetchApi<T>(
   options: FetchOptions = {}
 ): Promise<ApiResponse<T>> {
   const {
-    timeout = API_CONFIG.timeout,
-    useCache = true,
+    timeout = 10000,
     headers = {},
     ...restOptions
   } = options;
 
-  const url = `${API_CONFIG.baseUrl}${endpoint}`;
+  const baseUrl = 'http://dashboard.sentosakutech.com/api/v1';
+  const url = `${baseUrl}${endpoint}`;
 
   const defaultHeaders: Record<string, string> = {
     "Content-Type": "application/json",
     ...(headers as Record<string, string>),
   };
-
-  if (useCache) {
-    defaultHeaders["Cache-Control"] = `public, max-age=${API_CONFIG.cacheDuration}`;
-  }
 
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), timeout);
@@ -98,28 +88,28 @@ async function fetchApi<T>(
 export async function fetchProjects(params?: { category?: string }, options?: FetchOptions): Promise<Project[]> {
   const queryParams = params?.category ? `?category=${encodeURIComponent(params.category)}` : "";
   const response = await fetchApi<Project[]>(`/projects${queryParams}`, options);
-  return response.data;
+  return response.data || [];
 }
 
 export async function fetchTestimonials(params?: { rating?: number }, options?: FetchOptions): Promise<Testimonial[]> {
   const queryParams = params?.rating !== undefined ? `?rating=${params.rating}` : "";
   const response = await fetchApi<Testimonial[]>(`/testimonials${queryParams}`, options);
-  return response.data;
+  return response.data || [];
 }
 
 export async function fetchStats(options?: FetchOptions): Promise<Stat[]> {
   const response = await fetchApi<Stat[]>("/stats", options);
-  return response.data;
+  return response.data || [];
 }
 
 export async function fetchClients(options?: FetchOptions): Promise<Client[]> {
   const response = await fetchApi<Client[]>("/clients", options);
-  return response.data;
+  return response.data || [];
 }
 
 export async function fetchProcessInfo(options?: FetchOptions): Promise<ProcessInfo[]> {
   const response = await fetchApi<ProcessInfo[]>("/process-info", options);
-  return response.data;
+  return response.data || [];
 }
 
 export async function fetchProjectBySlug(slug: string, options?: FetchOptions): Promise<Project> {
@@ -160,12 +150,4 @@ export async function checkApiHealth(): Promise<boolean> {
   } catch {
     return false;
   }
-}
-
-export function getApiConfig() {
-  return { ...API_CONFIG };
-}
-
-export function updateApiConfig(config: Partial<typeof API_CONFIG>): void {
-  Object.assign(API_CONFIG, config);
 }
