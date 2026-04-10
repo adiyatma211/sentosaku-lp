@@ -1,3 +1,5 @@
+"use client";
+
 import styles from "./page.module.css";
 import HeroSection from "./components/HeroSection";
 import ClientsSection from "./components/ClientsSection";
@@ -5,37 +7,7 @@ import TestimonialsSection from "./components/TestimonialsSection";
 import ProjectsSection from "./components/ProjectsSection";
 import { fetchProjects, fetchTestimonials, fetchStats, fetchClients, fetchProcessInfo } from "@/lib/api";
 import type { Project, Testimonial, Stat, Client, ProcessInfo } from "@/lib/types";
-import { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Sentosaku Tech - Studio Web & Mobile Full-Stack",
-  description: "Kami rancang strategi, desain, hingga kode agar setiap rilis web atau mobile terasa mulus, stabil, dan siap tumbuh.",
-  keywords: ["web development", "mobile app", "full-stack", "startup"],
-  authors: [{ name: "Sentosaku Tech" }],
-  openGraph: {
-    title: "Sentosaku Tech - Studio Web & Mobile Full-Stack",
-    description: "Kami rancang strategi, desain, hingga kode agar setiap rilis web atau mobile terasa mulus, stabil, dan siap tumbuh.",
-    type: "website",
-    url: "https://sentosaku.com",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Sentosaku Tech - Web & Mobile Development",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Sentosaku Tech - Studio Web & Mobile",
-    images: ["/og-image.png"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-};
+import { useState, useEffect } from "react";
 
 const WHATSAPP_URL =
   "https://wa.me/6282226582306?text=Hello%20Sentosaku%20Team%2C%20let%27s%20discuss%20a%20project.";
@@ -69,31 +41,39 @@ function FloatingWhatsApp() {
   );
 }
 
-async function getHomeData() {
-  try {
-    const [projects, testimonials, stats, clients, processInfo] = await Promise.all([
-      fetchProjects(),
-      fetchTestimonials(),
-      fetchStats(),
-      fetchClients(),
-      fetchProcessInfo(),
-    ]);
+export default function Home() {
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+  const [stats, setStats] = useState<Stat[]>([]);
+  const [clients, setClients] = useState<Client[]>([]);
+  const [processInfo, setProcessInfo] = useState<ProcessInfo[]>([]);
+  const [loading, setLoading] = useState(true);
 
-    return { projects, testimonials, stats, clients, processInfo };
-  } catch (error) {
-    console.error('Failed to fetch home data:', error);
-    return {
-      projects: [],
-      testimonials: [],
-      stats: [],
-      clients: [],
-      processInfo: [],
+  useEffect(() => {
+    const getHomeData = async () => {
+      try {
+        const [fetchedProjects, fetchedTestimonials, fetchedStats, fetchedClients, fetchedProcessInfo] = await Promise.all([
+          fetchProjects(),
+          fetchTestimonials(),
+          fetchStats(),
+          fetchClients(),
+          fetchProcessInfo(),
+        ]);
+
+        setProjects(fetchedProjects);
+        setTestimonials(fetchedTestimonials);
+        setStats(fetchedStats);
+        setClients(fetchedClients);
+        setProcessInfo(fetchedProcessInfo);
+      } catch (error) {
+        console.error('Failed to fetch home data:', error);
+      } finally {
+        setLoading(false);
+      }
     };
-  }
-}
 
-export default async function Home() {
-  const { projects, testimonials, stats, clients, processInfo } = await getHomeData();
+    getHomeData();
+  }, []);
 
   return (
     <>
