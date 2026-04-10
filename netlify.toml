@@ -1,5 +1,5 @@
 [build]
-  command = "npm run build"
+  command = "curl -v https://dashboard.sentosakutech.com/api/v1/health && npm run build"
   publish = ".next"
 
 [[plugins]]
