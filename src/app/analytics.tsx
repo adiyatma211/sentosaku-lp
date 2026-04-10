@@ -1,12 +1,12 @@
 'use client';
 
 import Script from 'next/script';
-import { useEffect } from 'react';
+import { useEffect, Suspense } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 
 const GA_MEASUREMENT_ID = 'G-3TBMCBR13K';
 
-export function Analytics() {
+function AnalyticsInner() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -19,6 +19,10 @@ export function Analytics() {
     }
   }, [pathname, searchParams]);
 
+  return null;
+}
+
+export function Analytics() {
   return (
     <>
       <Script
@@ -33,6 +37,9 @@ export function Analytics() {
           gtag('config', '${GA_MEASUREMENT_ID}');
         `}
       </Script>
+      <Suspense fallback={null}>
+        <AnalyticsInner />
+      </Suspense>
     </>
   );
 }

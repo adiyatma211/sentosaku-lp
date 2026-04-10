@@ -1,3 +1,5 @@
+import * as Sentry from '@sentry/nextjs';
+
 export async function register() {
   if (process.env.NEXT_PUBLIC_SENTRY_DSN) {
     const { init } = await import('@sentry/nextjs');
@@ -12,7 +14,6 @@ export async function register() {
         (await import('@sentry/nextjs')).replayIntegration(),
       ],
       beforeSend(event, hint) {
-        // Filter out certain errors
         if (event.exception?.values?.[0]?.value?.includes('ResizeObserver')) {
           return null;
         }
