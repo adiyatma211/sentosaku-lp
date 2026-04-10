@@ -27,7 +27,7 @@ async function fetchApi<T>(
     ...restOptions
   } = options;
 
-  const baseUrl = 'http://dashboard.sentosakutech.com/api/v1';
+  const baseUrl = 'https://dashboard.sentosakutech.com/api/v1';
   const url = `${baseUrl}${endpoint}`;
 
   const defaultHeaders: Record<string, string> = {
