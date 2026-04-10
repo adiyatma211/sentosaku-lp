@@ -30,7 +30,7 @@ const nextConfig: NextConfig = {
         pathname: '/projects/**',
       },
       {
-        protocol: 'https',
+        protocol: 'http',
         hostname: 'dashboard.sentosakutech.com',
         port: '',
         pathname: '/**',
