@@ -1,11 +1,10 @@
 [build]
-  command = "npm run build"
+  command = "npm install --include=dev && npm run build"
   publish = ".next"
 
 [build.environment]
   NEXT_PUBLIC_API_BASE_URL = "http://dashboard.sentosakutech.com/api/v1"
-  NODE_VERSION = "22"
-  NODE_ENV = "development"
+  NODE_VERSION = "20"
 
 [[headers]]
   for = "/_next/static/*"
