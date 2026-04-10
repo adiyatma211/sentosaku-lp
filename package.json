@@ -14,12 +14,12 @@
     "react-dom": "19.0.0"
   },
   "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^19",
+    "@types/node": "^20.19.39",
+    "@types/react": "^19.2.14",
     "@types/react-dom": "^19",
     "baseline-browser-mapping": "^2.10.16",
     "eslint": "^9",
     "eslint-config-next": "^15.3.8",
-    "typescript": "^5.4.5"
+    "typescript": "^5.9.3"
   }
 }
