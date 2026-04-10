@@ -1,7 +1,7 @@
 import type { ApiResponse, ApiError, Project, Testimonial, Stat, Client, ProcessInfo } from "./types";
 
 const API_CONFIG = {
-  baseUrl: "http://dashboard.sentosakutech.com/api/v1",
+  baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL || "https://dashboard.sentosakutech.com/api/v1",
   timeout: 10000,
   cacheDuration: 3600,
 };
