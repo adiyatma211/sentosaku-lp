@@ -1,3 +1,5 @@
+import eslintPluginNext from "@next/eslint-plugin-next";
+
 const eslintConfig = [
   {
     ignores: [
@@ -7,8 +9,7 @@ const eslintConfig = [
       "next-env.d.ts",
     ],
   },
-  ...require("eslint-plugin-next").flatConfigs.recommended,
-  ...require("eslint-plugin-next").flatConfigs["typescript/recommended"],
+  eslintPluginNext.flatConfig.recommended,
 ];
 
 export default eslintConfig;
