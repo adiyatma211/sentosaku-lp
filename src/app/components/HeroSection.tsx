@@ -111,7 +111,7 @@ export default function HeroSection({
           </a>
           <a
             className={styles.tertiaryAction}
-            href="mailto:studio@sentosaku.com"
+            href="mailto:studio@sentosakutech.com"
           >
             Atur sesi strategi
           </a>

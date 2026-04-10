@@ -467,7 +467,7 @@ Legend:
   "action": "UPDATE",
   "old_values": {"title": "Pulse Market", "status": "Beta publik"},
   "new_values": {"title": "Pulse Market v2", "status": "Production"},
-  "changed_by": "admin@sentosaku.com",
+  "changed_by": "admin@sentosakutech.com",
   "changed_at": "2026-04-04T10:00:00.000Z"
 }
 ```
@@ -1032,7 +1032,7 @@ export async function createProject(data: any) {
       record_id: project.id,
       action: 'INSERT',
       new_values: project,
-      changed_by: 'admin@sentosaku.com',
+      changed_by: 'admin@sentosakutech.com',
     }
   })
   

@@ -175,7 +175,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Contact
 
 - **Website**: [sentosakutech.com](https://sentosakutech.com)
-- **Email**: studio@sentosaku.com
+- **Email**: studio@sentosakutech.com
 - **WhatsApp**: +62 822-2658-2306
 - **Portfolio**: View project showcase on the landing page
 

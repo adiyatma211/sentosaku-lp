@@ -1121,7 +1121,7 @@ If you encounter CORS errors:
 ## Support
 
 For support or questions, contact:
-- Email: support@sentosaku.com
+- Email: support@sentosakutech.com
 - Repository: [GitHub Link]
 - Documentation: [Docs Link]
 

@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = 'https://sentosaku.com';
+  const baseUrl = 'https://sentosakutech.com';
   
   try {
     // Try to fetch projects from API

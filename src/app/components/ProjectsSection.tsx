@@ -2,7 +2,6 @@
 
 import { useState, useCallback } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import styles from "../page.module.css";
 import ProjectModal from "./ProjectModal";
@@ -15,6 +14,16 @@ interface ProjectsSectionProps {
 export default function ProjectsSection({ projects }: ProjectsSectionProps) {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const router = useRouter();
+
+  const openModal = useCallback((project: Project) => {
+    setSelectedProject(project);
+    document.body.style.overflow = 'hidden';
+  }, []);
+
+  const closeModal = useCallback(() => {
+    setSelectedProject(null);
+    document.body.style.overflow = 'unset';
+  }, []);
 
   const prefetchProject = useCallback((slug: string) => {
     router.prefetch(`/projects/${slug}`);
@@ -41,12 +50,12 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
           const isLocalhost = isLocalhostImage(imageUrl);
 
           return (
-            <Link
+            <button
               key={project.id}
-              href={`/projects/${project.slug}`}
-              prefetch={true}
+              onClick={() => openModal(project)}
               onMouseEnter={() => prefetchProject(project.slug)}
               className={styles.projectButton}
+              type="button"
             >
               <article className={`${styles.layeredCard} ${styles.projectCard}`}>
                 <div className={styles.projectImage}>
@@ -77,11 +86,11 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                   </div>
                 </div>
               </article>
-            </Link>
+            </button>
           );
         })}
       </div>
-      <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
+      <ProjectModal project={selectedProject} onClose={closeModal} />
     </section>
   );
 }

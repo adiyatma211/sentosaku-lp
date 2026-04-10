@@ -18,14 +18,14 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Sentosaku Tech - Studio Web & Mobile Full-Stack",
   description: "Kami rancang strategi, desain, hingga kode agar setiap rilis web atau mobile terasa mulus, stabil, dan siap tumbuh.",
-  metadataBase: new URL('https://sentosaku.com'),
+  metadataBase: new URL('https://sentosakutech.com'),
   keywords: ["web development", "mobile app", "full-stack", "startup"],
   authors: [{ name: "Sentosaku Tech" }],
   openGraph: {
     title: "Sentosaku Tech - Studio Web & Mobile Full-Stack",
     description: "Kami rancang strategi, desain, hingga kode agar setiap rilis web atau mobile terasa mulus, stabil, dan siap tumbuh.",
     type: "website",
-    url: "https://sentosaku.com",
+    url: "https://sentosakutech.com",
     images: [
       {
         url: "/og-image.png",
@@ -74,7 +74,11 @@ export const metadata: Metadata = {
     title: 'Sentosaku Tech',
   },
   alternates: {
-    canonical: 'https://sentosaku.com',
+    canonical: 'https://sentosakutech.com',
+    languages: {
+      'id': 'https://sentosakutech.com',
+      'en': 'https://sentosakutech.com/en',
+    },
   },
 };
 
@@ -84,7 +88,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="id">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
         <SentryInit />
@@ -99,8 +103,8 @@ export default function RootLayout({
                 "@context": "https://schema.org",
                 "@type": "Organization",
                 "name": "Sentosaku Tech",
-                "url": "https://sentosaku.com",
-                "logo": "https://sentosaku.com/logo_bg_color.png",
+                "url": "https://sentosakutech.com",
+                "logo": "https://sentosakutech.com/logo_bg_color.png",
                 "description": "Kami rancang strategi, desain, hingga kode agar setiap rilis web atau mobile terasa mulus, stabil, dan siap tumbuh.",
                 "contactPoint": {
                   "@type": "ContactPoint",
@@ -117,7 +121,8 @@ export default function RootLayout({
                 "@context": "https://schema.org",
                 "@type": "WebSite",
                 "name": "Sentosaku Tech",
-                "url": "https://sentosaku.com",
+                "url": "https://sentosakutech.com",
+                "inLanguage": "id",
                 "description": "Studio Web & Mobile Full-Stack"
               },
               {
@@ -127,8 +132,8 @@ export default function RootLayout({
                   {
                     "@type": "ListItem",
                     "position": 1,
-                    "name": "Home",
-                    "item": "https://sentosaku.com"
+                    "name": "Beranda",
+                    "item": "https://sentosakutech.com"
                   }
                 ]
               }
