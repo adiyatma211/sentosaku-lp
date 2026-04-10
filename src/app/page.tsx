@@ -138,7 +138,7 @@ export default async function Home() {
                   </a>
                   <a
                     className={styles.secondaryAction}
-                    href="mailto:studio@sentosaku.com"
+                    href="mailto:adiyatmaharis21@gmail.com"
                   >
                     Email studio
                   </a>
