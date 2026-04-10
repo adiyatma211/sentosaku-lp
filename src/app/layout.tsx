@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { WebVitals } from "./web-vitals";
+import { Analytics } from "./analytics";
+import { SentryInit } from "./sentry";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -70,6 +73,9 @@ export const metadata: Metadata = {
     statusBarStyle: 'default',
     title: 'Sentosaku Tech',
   },
+  alternates: {
+    canonical: 'https://sentosaku.com',
+  },
 };
 
 export default function RootLayout({
@@ -81,6 +87,54 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
+        <SentryInit />
+        <WebVitals />
+        <Analytics />
+        {/* Structured Data / JSON-LD */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "Sentosaku Tech",
+                "url": "https://sentosaku.com",
+                "logo": "https://sentosaku.com/logo_bg_color.png",
+                "description": "Kami rancang strategi, desain, hingga kode agar setiap rilis web atau mobile terasa mulus, stabil, dan siap tumbuh.",
+                "contactPoint": {
+                  "@type": "ContactPoint",
+                  "email": "adiyatmaharis21@gmail.com",
+                  "contactType": "customer service"
+                },
+                "sameAs": [
+                  "https://linkedin.com/company/sentosakutech",
+                  "https://instagram.com/sentosakutech",
+                  "https://twitter.com/sentosakutech"
+                ]
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "name": "Sentosaku Tech",
+                "url": "https://sentosaku.com",
+                "description": "Studio Web & Mobile Full-Stack"
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://sentosaku.com"
+                  }
+                ]
+              }
+            ])
+          }}
+        />
       </body>
     </html>
   );

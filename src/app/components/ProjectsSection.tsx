@@ -1,7 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import styles from "../page.module.css";
 import ProjectModal from "./ProjectModal";
 import { Project } from "@/lib/types";
@@ -12,6 +14,11 @@ interface ProjectsSectionProps {
 
 export default function ProjectsSection({ projects }: ProjectsSectionProps) {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const router = useRouter();
+
+  const prefetchProject = useCallback((slug: string) => {
+    router.prefetch(`/projects/${slug}`);
+  }, [router]);
 
   function isLocalhostImage(src: string) {
     return src.includes('127.0.0.1') || src.includes('localhost');
@@ -34,9 +41,11 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
           const isLocalhost = isLocalhostImage(imageUrl);
 
           return (
-            <button
+            <Link
               key={project.id}
-              onClick={() => setSelectedProject(project)}
+              href={`/projects/${project.slug}`}
+              prefetch={true}
+              onMouseEnter={() => prefetchProject(project.slug)}
               className={styles.projectButton}
             >
               <article className={`${styles.layeredCard} ${styles.projectCard}`}>
@@ -48,6 +57,8 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                     className={styles.projectImageImg}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     unoptimized={isLocalhost}
+                    placeholder="blur"
+                    blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2QxZDVkYiIvPjwvc3ZnPg=="
                   />
                 </div>
                 <div className={`${styles.layeredInner} ${styles.projectBody}`}>
@@ -66,7 +77,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                   </div>
                 </div>
               </article>
-            </button>
+            </Link>
           );
         })}
       </div>
