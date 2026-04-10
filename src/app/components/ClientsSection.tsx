@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import styles from "../page.module.css";
 
 /**
@@ -10,6 +11,7 @@ interface ClientsSectionProps {
   clients: Array<{
     name: string;
     initial: string;
+    logo_url: string;
   }>;
 }
 
@@ -37,19 +39,27 @@ export default function ClientsSection({ clients }: ClientsSectionProps) {
           <div className={styles.clientsTrack}>
             {clients.map((client, index) => (
               <div key={index} className={styles.clientLogo}>
-                <div className={styles.logoPlaceholder}>
-                  <span className={styles.logoInitial}>{client.initial}</span>
-                  <span className={styles.logoName}>{client.name}</span>
-                </div>
+                <Image
+                  src={client.logo_url}
+                  alt={`${client.name} logo`}
+                  width={120}
+                  height={60}
+                  className={styles.clientLogoImg}
+                  unoptimized={client.logo_url.includes('127.0.0.1') || client.logo_url.includes('localhost')}
+                />
               </div>
             ))}
             {/* Duplicate items for seamless scrolling */}
             {clients.map((client, index) => (
               <div key={`duplicate-${index}`} className={styles.clientLogo}>
-                <div className={styles.logoPlaceholder}>
-                  <span className={styles.logoInitial}>{client.initial}</span>
-                  <span className={styles.logoName}>{client.name}</span>
-                </div>
+                <Image
+                  src={client.logo_url}
+                  alt={`${client.name} logo`}
+                  width={120}
+                  height={60}
+                  className={styles.clientLogoImg}
+                  unoptimized={client.logo_url.includes('127.0.0.1') || client.logo_url.includes('localhost')}
+                />
               </div>
             ))}
           </div>

@@ -1,6 +1,5 @@
 import Image from "next/image";
 import styles from "../page.module.css";
-import brandLogo from "../assets/logo_bg_color.png";
 
 const WHATSAPP_URL =
   "https://wa.me/6282226582306?text=Hello%20Sentosaku%20Team%2C%20let%27s%20discuss%20a%20project.";
@@ -76,7 +75,7 @@ export default function HeroSection({
         <div className={styles.brandMark}>
           <Image
             className={styles.brandLogo}
-            src={brandLogo}
+            src="/logo_bg_color.png"
             alt="Sentosakutech logo"
             width={64}
             height={64}
