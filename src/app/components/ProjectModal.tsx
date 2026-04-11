@@ -31,7 +31,8 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
   if (!project) return null;
 
   const isLocalhostImage = (project.image_url || project.image).includes('127.0.0.1') ||
-                          (project.image_url || project.image).includes('localhost');
+                          (project.image_url || project.image).includes('localhost') ||
+                          (project.image_url || project.image).includes('dashboard.sentosakutech.com');
 
   return (
     <div className={styles.modalOverlay} onClick={onClose}>

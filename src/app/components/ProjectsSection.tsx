@@ -29,8 +29,8 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
     router.prefetch(`/projects/${slug}`);
   }, [router]);
 
-  function isLocalhostImage(src: string) {
-    return src.includes('127.0.0.1') || src.includes('localhost');
+  function shouldSkipOptimization(src: string) {
+    return src.includes('127.0.0.1') || src.includes('localhost') || src.includes('dashboard.sentosakutech.com');
   }
 
   return (
@@ -47,7 +47,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
       <div className={styles.projectGrid}>
         {projects.map((project) => {
           const imageUrl = project.image_url || project.image;
-          const isLocalhost = isLocalhostImage(imageUrl);
+          const skipOptimization = shouldSkipOptimization(imageUrl);
 
           return (
             <button
@@ -65,7 +65,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                     fill
                     className={styles.projectImageImg}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    unoptimized={isLocalhost}
+                    unoptimized={skipOptimization}
                     placeholder="blur"
                     blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2QxZDVkYiIvPjwvc3ZnPg=="
                   />
